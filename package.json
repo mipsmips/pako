@@ -32,6 +32,11 @@
     "gh-doc": "npm run doc && gh-pages -d doc -f",
     "prepublishOnly": "npm run gh-doc"
   },
+  "exports": {
+    "import": "./dist/pako.esm.js",
+    "require": "./index.js"
+  },
+  "module": "dist/pako.esm.js",
   "devDependencies": {
     "@babel/preset-env": "^7.12.1",
     "@rollup/plugin-babel": "^5.2.1",

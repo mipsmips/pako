@@ -12,17 +12,15 @@ const banner = {
 }
 
 const plugins = [ nodeResolve(), commonjs(), banner ];
-const plugins_es5 = [
-  nodeResolve(),
-  commonjs(),
+
+const plugins_es5 = [ nodeResolve(), commonjs(),
   babel({
     babelHelpers: 'bundled',
     presets: [
       [ "@babel/preset-env" ]
     ]
   }),
-  banner
-];
+  banner ];
 
 
 export default [
@@ -75,6 +73,13 @@ export default [
       { file: 'dist/pako_inflate.es5.min.js', format: 'umd', name: 'pako', plugins: [ terser() ] }
     ],
     plugins: plugins_es5
+  },
+  // esm modules
+  {
+    input: 'index.js',
+    output: [
+      { file: 'dist/pako.esm.js', format: 'esm' }
+    ],
+    plugins: plugins
   }
-
 ];
